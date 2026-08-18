@@ -1,0 +1,116 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: ja
+site_url: "https://gym-recipe-test.netlify.app"
+display_url: "https://gym-recipe-test.netlify.app"
+show_preview_links: true
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "journal"
+    label: "ブログ記事"
+    label_singular: "ブログ記事"
+    folder: "src/posts"
+    create: true
+    delete: true
+    extension: "json"
+    format: "json"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    sortable_fields: ["date", "title", "category"]
+    summary: "{{date}}｜{{title}}"
+    preview_path: "journal/{{filename}}/"
+    fields:
+      - { label: "タイトル", name: "title", widget: "string" }
+      - { label: "公開日", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+      - label: "カテゴリー"
+        name: "category"
+        widget: "select"
+        options: ["TRAINING", "BODY", "LIFE", "NEWS"]
+      - { label: "カード上部の英字", name: "coverLabel", widget: "string", required: false }
+      - { label: "記事の短い説明", name: "excerpt", widget: "text" }
+      - { label: "記事画像", name: "image", widget: "image", required: false, choose_url: false }
+      - { label: "本文", name: "body", widget: "markdown" }
+
+  - name: "settings"
+    label: "サイト設定"
+    files:
+      - label: "基本情報・料金・アクセス"
+        name: "site"
+        file: "src/data/site.json"
+        fields:
+          - { label: "サイト名", name: "name", widget: "string" }
+          - { label: "英字サブタイトル", name: "tagline", widget: "string" }
+          - { label: "公開URL", name: "url", widget: "string" }
+          - { label: "検索用説明文", name: "description", widget: "text" }
+          - label: "トップ"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "小見出し", name: "eyebrow", widget: "string" }
+              - { label: "メインタイトル", name: "title", widget: "string" }
+              - { label: "説明", name: "lead", widget: "text" }
+              - { label: "トップ画像", name: "image", widget: "image", choose_url: false }
+          - label: "コンセプト"
+            name: "concept"
+            widget: "object"
+            fields:
+              - { label: "見出し", name: "title", widget: "string" }
+              - { label: "導入", name: "intro", widget: "text" }
+              - { label: "強調文", name: "strong", widget: "text" }
+              - { label: "本文", name: "body", widget: "text" }
+          - label: "トレーニング写真セクション"
+            name: "training"
+            widget: "object"
+            fields:
+              - { label: "見出し", name: "title", widget: "string" }
+              - { label: "本文", name: "body", widget: "text" }
+              - { label: "画像", name: "image", widget: "image", choose_url: false }
+          - label: "トレーナー"
+            name: "trainer"
+            widget: "object"
+            fields:
+              - { label: "見出し", name: "title", widget: "string" }
+              - { label: "本文", name: "body", widget: "text" }
+              - { label: "画像", name: "image", widget: "image", choose_url: false }
+              - { label: "トレーナー歴", name: "years", widget: "string" }
+              - { label: "指導の中心", name: "core", widget: "string" }
+              - { label: "得意分野", name: "specialty", widget: "string" }
+          - label: "料金プラン"
+            name: "prices"
+            widget: "list"
+            min: 1
+            max: 6
+            fields:
+              - { label: "英字タグ", name: "tag", widget: "string" }
+              - { label: "プラン名", name: "name", widget: "string" }
+              - { label: "料金", name: "price", widget: "string" }
+              - { label: "料金横の表記", name: "unit", widget: "string", required: false }
+              - { label: "説明", name: "description", widget: "text" }
+              - { label: "時間・回数", name: "detail", widget: "string" }
+              - { label: "おすすめ表示", name: "featured", widget: "boolean", default: false }
+          - label: "無料カウンセリング"
+            name: "counseling"
+            widget: "object"
+            fields:
+              - { label: "見出し", name: "title", widget: "string" }
+              - { label: "説明", name: "body", widget: "text" }
+          - label: "VISIT"
+            name: "visit"
+            widget: "object"
+            fields:
+              - { label: "見出し", name: "headline", widget: "string" }
+              - { label: "説明", name: "lead", widget: "text" }
+              - { label: "所在地", name: "address", widget: "string" }
+              - { label: "アクセス", name: "access", widget: "text" }
+              - { label: "駐車場", name: "parking", widget: "text" }
+              - { label: "Google Map 埋め込みURL", name: "mapEmbed", widget: "string" }
+          - label: "お問い合わせ"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "見出し", name: "headline", widget: "string" }
+              - { label: "説明", name: "lead", widget: "text" }
+              - { label: "メールアドレス", name: "email", widget: "string", required: false }

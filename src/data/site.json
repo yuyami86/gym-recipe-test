@@ -1,0 +1,77 @@
+{
+  "name": "Personal gym Recipe",
+  "tagline": "TRAINING FOR BETTER DAILY LIFE",
+  "url": "https://gym-recipe-test.netlify.app",
+  "description": "Personal gym Recipe。重心コントロールとフリーウェイトを通して、日常やスポーツにつながる身体づくりをサポートします。",
+  "hero": {
+    "eyebrow": "Personal gym Recipe",
+    "title": "身体には、あなただけのRecipeがある。",
+    "lead": "鍛えるだけではなく、身体を知り、重心を知り、正しく動けるようになる。トレーニングを、日常を豊かにする体験へ。",
+    "image": "/assets/gym.jpg"
+  },
+  "concept": {
+    "title": "強くなる前に、自分の身体を知る。",
+    "intro": "Recipeが大切にしているのは、ただ重いものを持ち上げることではありません。",
+    "strong": "身体とウェイトの重心を知る。重心を捉える姿勢を覚える。そして、正しく動かす。",
+    "body": "フリーウェイトを通して身につけた身体の使い方を、日常生活やスポーツへ。身体作りには、一人ひとり違う“recipe”があります。"
+  },
+  "training": {
+    "title": "一回一回を、濃く。",
+    "body": "周囲を気にせず、フォーム、呼吸、重心の感覚と向き合う。自分の身体だけに集中する時間をつくります。",
+    "image": "/assets/training.jpg"
+  },
+  "trainer": {
+    "title": "“できる”まで、わかりやすく伝える。",
+    "body": "フィジーク、格闘技、ウエイトリフティングなど様々な競技経験を背景に、重心コントロールとフリーウェイトを中心に指導。BIG3を軸に、一人ひとりの目的に合わせて身体の使い方を組み立てます。",
+    "image": "/assets/trainer.jpg",
+    "years": "9",
+    "core": "BIG 3",
+    "specialty": "FREE"
+  },
+  "prices": [
+    {
+      "tag": "FOR BEGINNERS",
+      "name": "Essential 4回",
+      "price": "¥28,000",
+      "unit": "/ 4 sessions",
+      "description": "ウェイトトレーニングをはじめとした、運動経験が少ない方向け。",
+      "detail": "60分 × 4回",
+      "featured": false
+    },
+    {
+      "tag": "MAIN PROGRAM",
+      "name": "Main 4回",
+      "price": "¥36,000",
+      "unit": "/ 4 sessions",
+      "description": "スポーツや減量など、幅広い目的に合わせる本コース。",
+      "detail": "60分 × 4回",
+      "featured": true
+    },
+    {
+      "tag": "INTENSIVE",
+      "name": "Main 8回",
+      "price": "¥72,000",
+      "unit": "/ 8 sessions",
+      "description": "より高い頻度で継続したい方向けの集中コース。",
+      "detail": "60分 × 8回",
+      "featured": false
+    }
+  ],
+  "counseling": {
+    "title": "カウンセリング無料",
+    "body": "まずは現在のお悩みや目標をお聞きし、無理のない進め方をご案内します。"
+  },
+  "visit": {
+    "headline": "通う時間も、トレーニングの一部に。",
+    "lead": "桑名シティホテル4F。駅から歩けて、車でも通いやすい環境です。",
+    "address": "三重県桑名市中央町3-23 桑名シティホテル4F",
+    "access": "西桑名駅から徒歩圏内 / 桑名駅からも徒歩でアクセス可能",
+    "parking": "桑名シティホテル内駐車場を利用可 / Recipe利用時は駐車代無料",
+    "mapEmbed": "https://www.google.com/maps?q=%E4%B8%89%E9%87%8D%E7%9C%8C%E6%A1%91%E5%90%8D%E5%B8%82%E4%B8%AD%E5%A4%AE%E7%94%BA3-23%20%E6%A1%91%E5%90%8D%E3%82%B7%E3%83%86%E3%82%A3%E3%83%9B%E3%83%86%E3%83%AB&output=embed"
+  },
+  "contact": {
+    "headline": "まずは、あなたのことを聞かせてください。",
+    "lead": "体験・料金・トレーニング内容について、お問い合わせフォームからお気軽にご相談ください。",
+    "email": ""
+  }
+}
