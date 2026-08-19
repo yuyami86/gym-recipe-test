@@ -1106,3 +1106,36 @@ footer{
 .contact-heading .contact-keep {
   white-space: nowrap;
 }
+/* CONTACT 重なり修正 */
+.contact-head {
+  display: block !important;
+}
+
+.contact-title-block {
+  width: 100%;
+  max-width: 100%;
+}
+
+.contact-title-block h2 {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 0;
+}
+
+.contact-intro {
+  width: 100%;
+  max-width: 720px;
+  margin-top: 22px;
+}
+
+.contact-intro .lead {
+  margin: 0;
+}
+
+/* スマホでは画面外にはみ出さないようにする */
+@media (max-width: 700px) {
+  .contact-title-block h2 {
+    white-space: normal !important;
+    font-size: clamp(32px, 10vw, 48px) !important;
+  }
+}
