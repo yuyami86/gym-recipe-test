@@ -1099,3 +1099,10 @@ footer{
   .article-tools{align-items:flex-start;flex-direction:column}
   .thanks-card{padding:38px 22px}
 }
+.contact-heading .contact-line {
+  display: block;
+}
+
+.contact-heading .contact-keep {
+  white-space: nowrap;
+}
