@@ -1373,3 +1373,18 @@ footer{
   <span class="mobile-line">あなただけの</span>
   <span class="mobile-line">Recipeがある。</span>
 </h1>
+@media (max-width: 700px) {
+  .training-copy h2.mobile-one-line {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+
+    white-space: nowrap !important;
+    word-break: keep-all !important;
+    overflow-wrap: normal !important;
+
+    font-size: clamp(26px, 7.2vw, 34px) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em;
+  }
+}
