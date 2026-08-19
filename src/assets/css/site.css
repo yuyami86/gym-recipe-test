@@ -1342,3 +1342,29 @@ footer{
     max-width: 100%;
   }
 }
+@media (max-width: 700px) {
+
+  .hero h1 {
+    font-size: clamp(40px, 10.5vw, 52px) !important;
+    line-height: 1.08;
+  }
+
+  .concept-grid h2,
+  .section-head h2,
+  .trainer-copy h2,
+  .visit-copy h2,
+  .contact-title-block h2 {
+    font-size: clamp(34px, 9vw, 44px) !important;
+    line-height: 1.22 !important;
+  }
+
+  .manifesto-line {
+    font-size: clamp(34px, 9vw, 43px) !important;
+    line-height: 1.2 !important;
+  }
+
+  .mobile-line {
+    display: block;
+    white-space: nowrap;
+  }
+}
