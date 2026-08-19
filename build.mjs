@@ -47,12 +47,11 @@ function home(site,posts){const plans=site.prices.map(x=>`<article class="plan${
 <section class="training"><div class="training-photo"><img src="${attr(safeUrl(site.training.image))}" alt="${attr(site.name)} トレーニング指導"></div><div class="training-copy reveal"><div class="eyebrow">Private Training</div><h2 class="serif">${esc(site.training.title)}</h2><p>${esc(site.training.body)}</p></div></section>
 <section class="section trainer" id="trainer"><div class="container trainer-grid"><div class="trainer-photo reveal"><img src="${attr(safeUrl(site.trainer.image))}" alt="${attr(site.name)} トレーナー"></div><div class="trainer-copy reveal"><div class="eyebrow">03 / Trainer</div><h2 class="serif">${esc(site.trainer.title)}</h2><p>${esc(site.trainer.body)}</p><div class="stats"><div class="stat"><strong class="serif">${esc(site.trainer.years)}</strong><span>YEARS / トレーナー歴</span></div><div class="stat"><strong class="serif">${esc(site.trainer.core)}</strong><span>CORE STYLE / 指導の中心</span></div><div class="stat"><strong class="serif">${esc(site.trainer.specialty)}</strong><span>WEIGHT / 得意分野</span></div></div></div></div></section>
 <section class="section price" id="price"><div class="container"><div class="section-head reveal"><div class="eyebrow">04 / Price</div><h2 class="serif">続け方も、あなたに合わせる。</h2><p class="lead">目的やトレーニング経験に合わせて、無理のないペースから始められます。</p></div><div class="price-grid">${plans}</div><div class="counseling-band reveal"><span class="label">FIRST COUNSELING</span><strong>${esc(site.counseling.title)}</strong><p>${esc(site.counseling.body)}</p></div></div></section>
-<h2 class="serif">${esc(site.visit.title)}</h2>
 <section class="section visit" id="visit">
   <div class="container visit-grid">
     <div class="visit-copy reveal">
-      <div class="eyebrow">05 / Visit</div>
-      <h2 class="serif">${esc(site.visit.title)}</h2>
+   <div class="eyebrow">05 / Visit</div>
+    <h2 class="serif">通う時間も、トレーニングの一部に。</h2>      
       <p class="lead">${esc(site.visit.lead)}</p>
 
       <div class="info-list">
