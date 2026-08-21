@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yuyami86.github.io/gym-recipe-test/sitemap.xml
