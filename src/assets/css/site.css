@@ -187,6 +187,18 @@ header{
   align-items:start;
 }
 .concept-copy p{margin-bottom:18px}
+.story-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1px;
+  margin-top:64px;
+  background:var(--line);
+  border:1px solid var(--line);
+}
+.story-card{background:var(--paper);padding:34px 36px;min-height:230px}
+.story-card .label{font-size:10px;letter-spacing:.18em;color:var(--warm);font-weight:800}
+.story-card h3{margin:12px 0 13px;font-size:25px;font-weight:400}
+.story-card p{margin:0;color:var(--muted);font-size:15px}
 
 .manifesto{
   background:var(--dark);
@@ -701,7 +713,8 @@ footer{
 @media(max-width:860px){
   .navlinks a:not(.nav-cta){display:none}
   .section{padding:84px 0}
-  .concept-grid,.trainer-grid,.visit-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .concept-grid,.trainer-grid,.visit-grid,.contact-grid,.story-grid{grid-template-columns:1fr;gap:40px}
+  .story-grid{gap:1px}
   .trainer-photo{max-width:600px}
   .map-box,.map-box iframe{min-height:420px}
   .counseling-band{grid-template-columns:auto auto;gap:7px 12px}
@@ -731,7 +744,7 @@ footer{
     line-height:1.16;
   }
   .manifesto-line .keep{display:inline;white-space:nowrap}
-  .method-card{padding:24px;min-height:0}
+  .method-card,.story-card{padding:24px;min-height:0}
   .training-photo{min-height:48svh}
   .training-copy{padding:38px 5vw 42px}
   .stats{grid-template-columns:1fr}
