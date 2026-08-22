@@ -1,4 +1,5 @@
 (()=>{
+  const base=window.RECIPE_BASE_PATH||'';
   const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
   if(!reduce && 'IntersectionObserver' in window){
     const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');ro.unobserve(e.target)}}),{threshold:.12});
@@ -20,6 +21,6 @@
   const bySlug=new Map();
   buttons.forEach(btn=>{const slug=btn.dataset.likeSlug;if(!bySlug.has(slug))bySlug.set(slug,[]);bySlug.get(slug).push(btn)});
   const paint=(slug,count)=>{(bySlug.get(slug)||[]).forEach(btn=>{const s=btn.querySelector('span');if(s)s.textContent=String(count);btn.classList.toggle('liked',localStorage.getItem('recipe-liked-'+slug)==='1')})};
-  bySlug.forEach(async(_,slug)=>{try{const r=await fetch('/api/likes/'+encodeURIComponent(slug));if(r.ok){const j=await r.json();paint(slug,j.count||0)}}catch{paint(slug,0)}});
-  buttons.forEach(btn=>btn.addEventListener('click',async()=>{const slug=btn.dataset.likeSlug;if(localStorage.getItem('recipe-liked-'+slug)==='1')return;const same=bySlug.get(slug)||[];same.forEach(b=>b.disabled=true);try{const r=await fetch('/api/likes/'+encodeURIComponent(slug),{method:'POST',headers:{'content-type':'application/json'}});if(r.ok){const j=await r.json();localStorage.setItem('recipe-liked-'+slug,'1');paint(slug,j.count||1)}}finally{same.forEach(b=>b.disabled=false)}}));
+  bySlug.forEach(async(_,slug)=>{try{const r=await fetch(base+'/api/likes/'+encodeURIComponent(slug));if(r.ok){const j=await r.json();paint(slug,j.count||0)}}catch{paint(slug,0)}});
+  buttons.forEach(btn=>btn.addEventListener('click',async()=>{const slug=btn.dataset.likeSlug;if(localStorage.getItem('recipe-liked-'+slug)==='1')return;const same=bySlug.get(slug)||[];same.forEach(b=>b.disabled=true);try{const r=await fetch(base+'/api/likes/'+encodeURIComponent(slug),{method:'POST',headers:{'content-type':'application/json'}});if(r.ok){const j=await r.json();localStorage.setItem('recipe-liked-'+slug,'1');paint(slug,j.count||1)}}finally{same.forEach(b=>b.disabled=false)}}));
 })();
