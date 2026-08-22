@@ -4,11 +4,11 @@ backend:
   branch: main
 
 locale: ja
-site_url: "https://yuyami86.github.io/gym-recipe-test/"
-display_url: "https://yuyami86.github.io/gym-recipe-test/"
+site_url: "https://gym-recipe-test.netlify.app"
+display_url: "https://gym-recipe-test.netlify.app"
 show_preview_links: true
 media_folder: "src/assets/uploads"
-public_folder: "/gym-recipe-test/assets/uploads"
+public_folder: "/assets/uploads"
 
 collections:
   - name: "journal"
