@@ -3,17 +3,22 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname=path.dirname(fileURLToPath(import.meta.url));
-const src=path.join(__dirname,"src"), out=path.join(__dirname,"_site");
+const src=path.join(__dirname,"src"), out=path.join(__dirname,"docs");
+const basePath="/gym-recipe-test";
 const readJSON=p=>JSON.parse(fs.readFileSync(p,"utf8"));
 const esc=s=>String(s??"").replace(/[&<>\"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const attr=esc;
 const safeUrl=u=>{const s=String(u||"").trim(); return /^(https?:\/\/|\/|\.\.?\/)/i.test(s)?s:"#"};
+const publicUrl=u=>{const s=safeUrl(u);return s.startsWith("/")?`${basePath}${s}`:s};
+// Generated HTML may contain root-relative links from content or templates.
+// Prefix them for GitHub Pages while leaving already-prefixed URLs untouched.
+const page=html=>html.replace(/(["'])\/(?!\/|gym-recipe-test(?:\/|["']))/g,`$1${basePath}/`);
 const fmtDate=s=>{const d=new Date(String(s)+"T00:00:00+09:00"); return new Intl.DateTimeFormat("ja-JP",{year:"numeric",month:"2-digit",day:"2-digit"}).format(d).replaceAll("/",".")};
 const slugFromFile=f=>path.basename(f,".json");
 
 function inline(md){
   let s=esc(md);
-  s=s.replace(/!\[([^\]]*)\]\(([^)]+)\)/g,(_,alt,url)=>`<img src="${attr(safeUrl(url))}" alt="${alt}">`);
+  s=s.replace(/!\[([^\]]*)\]\(([^)]+)\)/g,(_,alt,url)=>`<img src="${attr(publicUrl(url))}" alt="${alt}">`);
   s=s.replace(/\[([^\]]+)\]\(([^)]+)\)/g,(_,text,url)=>`<a href="${attr(safeUrl(url))}">${text}</a>`);
   s=s.replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>");
   s=s.replace(/`([^`]+)`/g,"<code>$1</code>");
@@ -35,10 +40,10 @@ function markdown(md){
   flushP();flushL();return html.join("\n");
 }
 function copyDir(from,to){fs.mkdirSync(to,{recursive:true});for(const ent of fs.readdirSync(from,{withFileTypes:true})){const a=path.join(from,ent.name),b=path.join(to,ent.name);ent.isDirectory()?copyDir(a,b):fs.copyFileSync(a,b)}}
-function header(site,home=false){return `<header><div class="container nav"><a class="brand" href="${home?'#top':'/'}">${esc(site.name)}<small>${esc(site.tagline)}</small></a><nav class="navlinks"><a href="${home?'':'/'}#concept">Concept</a><a href="${home?'':'/'}#method">Method</a><a href="${home?'':'/'}#trainer">Trainer</a><a href="${home?'':'/'}#price">Price</a><a href="${home?'':'/'}#visit">Visit</a><a href="${home?'':'/'}#journal">Journal</a><a class="nav-cta" href="${home?'':'/'}#contact">お問い合わせ</a></nav></div></header>`}
+function header(site,home=false){const top=home?'':basePath+'/';return `<header><div class="container nav"><a class="brand" href="${home?'#top':top}">${esc(site.name)}<small>${esc(site.tagline)}</small></a><nav class="navlinks"><a href="${top}#concept">Concept</a><a href="${top}#method">Method</a><a href="${top}#trainer">Trainer</a><a href="${top}#price">Price</a><a href="${top}#visit">Visit</a><a href="${top}#journal">Journal</a><a class="nav-cta" href="${top}#contact">お問い合わせ</a></nav></div></header>`}
 function footer(site){return `<footer><div class="container footer-row"><span>${esc(site.name)}</span><span>© ${new Date().getFullYear()} ${esc(site.name)}</span></div></footer>`}
-function head(site,title,desc,url,identity=false){return `<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f5f3ed"><title>${esc(title)}</title><meta name="description" content="${attr(desc)}"><link rel="canonical" href="${attr(url)}"><link rel="stylesheet" href="/assets/css/site.css"><script>document.documentElement.classList.add('js')</script>${identity?'<script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>':''}<script src="/assets/js/site.js" defer></script></head>`}
-function card(p){const cover=p.image?`<div class="post-cover has-image"><img src="${attr(safeUrl(p.image))}" alt=""></div>`:`<div class="post-cover"><span>${esc(p.coverLabel||p.category)}</span></div>`;return `<article class="post reveal">${cover}<div class="post-body"><div class="post-meta">${fmtDate(p.date)} / ${esc(p.category)}</div><h3 title="${attr(p.title)}">${esc(p.title)}</h3><p>${esc(p.excerpt)}</p><div class="post-actions"><button class="like-btn" data-like-slug="${attr(p.slug)}">👍 参考になった <span>0</span></button><a class="read-more" href="/journal/${encodeURIComponent(p.slug)}/">記事を読む →</a></div></div></article>`}
+function head(site,title,desc,url,identity=false){return `<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f5f3ed"><title>${esc(title)}</title><meta name="description" content="${attr(desc)}"><link rel="canonical" href="${attr(url)}"><link rel="stylesheet" href="${basePath}/assets/css/site.css"><script>document.documentElement.classList.add('js')</script>${identity?'<script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>':''}<script>window.RECIPE_BASE_PATH='${basePath}'</script><script src="${basePath}/assets/js/site.js" defer></script></head>`}
+function card(p){const cover=p.image?`<div class="post-cover has-image"><img src="${attr(publicUrl(p.image))}" alt=""></div>`:`<div class="post-cover"><span>${esc(p.coverLabel||p.category)}</span></div>`;return `<article class="post reveal">${cover}<div class="post-body"><div class="post-meta">${fmtDate(p.date)} / ${esc(p.category)}</div><h3 title="${attr(p.title)}">${esc(p.title)}</h3><p>${esc(p.excerpt)}</p><div class="post-actions"><button class="like-btn" data-like-slug="${attr(p.slug)}">👍 参考になった <span>0</span></button><a class="read-more" href="${basePath}/journal/${encodeURIComponent(p.slug)}/">記事を読む →</a></div></div></article>`}
 function home(site,posts){const plans=site.prices.map(x=>`<article class="plan${x.featured?' featured':''} reveal"><div class="tag">${esc(x.tag)}</div><h3>${esc(x.name)}</h3><div class="price-num">${esc(x.price)} <small>${esc(x.unit)}</small></div><p>${esc(x.description)}</p><div class="bottom">${esc(x.detail)}</div></article>`).join("");const cards=posts.map(card).join("");const mail=site.contact.email?`<div class="mail-line">メール：<a href="mailto:${attr(site.contact.email)}">${esc(site.contact.email)}</a></div>`:"";return `<!doctype html><html lang="ja">${head(site,`${site.name} | ${site.hero.title}`,site.description,site.url+'/',true)}<body>${header(site,true)}<main id="top">
 <section class="hero"><div class="hero-media"><img src="${attr(safeUrl(site.hero.image))}" alt="${attr(site.name)} ジム内観"></div><div class="container hero-inner"><div class="eyebrow">${esc(site.hero.eyebrow)}</div><h1 class="serif">
   <span class="mobile-line">身体には、</span>
@@ -48,7 +53,7 @@ function home(site,posts){const plans=site.prices.map(x=>`<article class="plan${
 <section class="section" id="concept"><div class="container concept-grid reveal"><div><div class="eyebrow">01 / Philosophy</div><h2 class="serif">
   <span class="mobile-line">強くなる前に、</span>
   <span class="mobile-line">自分の身体を知る。</span>
-</h2></div><div class="lead concept-copy"><p>${esc(site.concept.intro)}</p><p><strong>${esc(site.concept.strong)}</strong></p><p>${esc(site.concept.body)}</p></div></div></section>
+</h2></div><div class="lead concept-copy"><p>${esc(site.concept.intro)}</p><p><strong>${esc(site.concept.strong)}</strong></p><p>${esc(site.concept.body)}</p></div></div><div class="story-grid"><article class="story-card reveal"><div class="label">WHY WE STARTED</div><h3 class="serif">Recipeを始めた理由</h3><p>${esc(site.story.openingReason)}</p></article><article class="story-card reveal"><div class="label">OUR NAME</div><h3 class="serif">店名に込めた想い</h3><p>${esc(site.story.nameOrigin)}</p></article><article class="story-card reveal"><div class="label">FOR YOU</div><h3 class="serif">こんな方へ</h3><p>${esc(site.story.audience)}</p></article><article class="story-card reveal"><div class="label">COACHING POLICY</div><h3 class="serif">指導で大切にすること</h3><p>${esc(site.story.coachingPolicy)}</p></article></div></div></section>
 <section class="manifesto"><div class="container manifesto-stack"><div class="manifesto-line serif"><span class="keep">持ち上げる前に、</span><span class="keep">立ち方から。</span></div><div class="manifesto-line serif accent">鍛えるだけじゃない。</div><div class="manifesto-line serif">身体を理解する。</div><div class="manifesto-line serif accent">それが、Recipe。</div></div></section>
 <section class="section method" id="method"><div class="container"><div class="section-head reveal"><div class="eyebrow">02 / Method</div><h2 class="serif">身体が変わる、3つの順番。</h2><p class="lead">Recipeでは、重さよりも先に「どう立つか」「どう支えるか」「どう動くか」を大切にします。</p></div><div class="method-grid"><article class="method-card reveal" data-num="01"><div class="num">01</div><h3 class="serif">重心を知る。</h3><p>身体とウェイトがどこにあるのか。まず、自分がどこに立っているのかを知ることから始めます。</p></article><article class="method-card reveal" data-num="02"><div class="num">02</div><h3 class="serif">姿勢を覚える。</h3><p>力を出す前に、力を受け止められる姿勢をつくる。それがすべてのトレーニングの土台になります。</p></article><article class="method-card reveal" data-num="03"><div class="num">03</div><h3 class="serif">正しく動かす。</h3><p>重心と姿勢が整ったら、実際にウェイトを動かす。フリーウェイトだから得られる感覚を身体に刻みます。</p></article></div></div></section>
 <section class="training"><div class="training-photo"><img src="${attr(safeUrl(site.training.image))}" alt="${attr(site.name)} トレーニング指導"></div><div class="training-copy reveal"><div class="eyebrow">Private Training</div><h2 class="serif mobile-one-line">一回、一回を、濃く。</h2><p>${esc(site.training.body)}</p></div></section>
@@ -116,9 +121,10 @@ fs.rmSync(out,{recursive:true,force:true});fs.mkdirSync(out,{recursive:true});
 copyDir(path.join(src,"assets"),path.join(out,"assets"));copyDir(path.join(src,"admin"),path.join(out,"admin"));
 const site=readJSON(path.join(src,"data/site.json"));
 const posts=fs.readdirSync(path.join(src,"posts")).filter(f=>f.endsWith(".json")).map(f=>({...readJSON(path.join(src,"posts",f)),slug:slugFromFile(f)})).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
-fs.writeFileSync(path.join(out,"index.html"),home(site,posts));
-for(const p of posts){const dir=path.join(out,"journal",p.slug);fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(path.join(dir,"index.html"),article(site,p))}
-fs.mkdirSync(path.join(out,"thanks"),{recursive:true});fs.writeFileSync(path.join(out,"thanks","index.html"),thanks(site));fs.writeFileSync(path.join(out,"404.html"),notFound(site));
+fs.writeFileSync(path.join(out,"index.html"),page(home(site,posts)));
+for(const p of posts){const dir=path.join(out,"journal",p.slug);fs.mkdirSync(dir,{recursive:true});fs.writeFileSync(path.join(dir,"index.html"),page(article(site,p)))}
+fs.mkdirSync(path.join(out,"thanks"),{recursive:true});fs.writeFileSync(path.join(out,"thanks","index.html"),page(thanks(site)));fs.writeFileSync(path.join(out,"404.html"),page(notFound(site)));
+fs.writeFileSync(path.join(out,".nojekyll"),"");
 const urls=['/',...posts.map(p=>`/journal/${encodeURIComponent(p.slug)}/`),'/thanks/'];
 fs.writeFileSync(path.join(out,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.map(u=>`<url><loc>${esc(site.url+u)}</loc></url>`).join('')}</urlset>`);
 fs.writeFileSync(path.join(out,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${site.url}/sitemap.xml\n`);
