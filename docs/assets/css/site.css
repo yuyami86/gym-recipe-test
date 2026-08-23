@@ -1381,11 +1381,6 @@ footer{
     white-space: nowrap;
   }
 }
-<h1 class="serif">
-  <span class="mobile-line">身体には、</span>
-  <span class="mobile-line">あなただけの</span>
-  <span class="mobile-line">Recipeがある。</span>
-</h1>
 @media (max-width: 700px) {
   .training-copy h2.mobile-one-line {
     display: block !important;
@@ -1401,3 +1396,93 @@ footer{
     letter-spacing: -0.02em;
   }
 }
+
+/* Navigation */
+.nav{width:min(1380px,96vw)}
+.navlinks{gap:12px;font-size:10px;white-space:nowrap}
+.nav-cta{padding:9px 13px}
+.menu-toggle{display:none;border:0;background:transparent;color:var(--ink);align-items:center;gap:8px;padding:10px 0;font-size:10px;font-weight:800;letter-spacing:.14em}
+.menu-toggle i{display:block;width:21px;height:1px;background:currentColor;position:absolute;right:0}
+.menu-toggle i:first-of-type{transform:translateY(-4px)}
+.menu-toggle i:last-of-type{transform:translateY(4px)}
+.menu-toggle{position:relative;padding-right:30px}
+.menu-backdrop{position:fixed;inset:0;z-index:98;background:rgba(15,17,14,.46)}
+.mobile-menu{position:fixed;top:0;right:0;z-index:99;width:min(390px,88vw);height:100dvh;background:var(--paper);padding:24px 28px;transform:translateX(102%);transition:transform .35s var(--ease);box-shadow:-20px 0 60px rgba(0,0,0,.16)}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu-head{display:flex;align-items:center;justify-content:space-between;padding-bottom:18px;border-bottom:1px solid var(--line);font-size:10px;letter-spacing:.18em;font-weight:800}
+.mobile-menu-head button{border:0;background:transparent;font-size:30px;font-weight:300;line-height:1}
+.mobile-menu nav{display:flex;flex-direction:column;padding-top:12px}
+.mobile-menu nav a{padding:13px 0;border-bottom:1px solid var(--line);font:400 18px "Yu Mincho","Hiragino Mincho ProN",serif}
+.mobile-menu .nav-cta{margin-top:18px;text-align:center;border:0;color:#fff;font-family:inherit;font-size:13px}
+body.menu-open{overflow:hidden}
+
+/* Trainer thoughts */
+.trainer-identity{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:-4px 0 12px}
+.trainer-identity strong{font-size:24px;font-weight:400}
+.trainer-identity span{color:var(--muted);font-size:12px;line-height:1.8}
+.trainer-motto{margin:0 0 20px;padding:11px 16px;border-left:2px solid var(--warm);background:rgba(184,122,76,.07);font-weight:700;color:var(--ink)}
+.trainer-thoughts{margin-top:34px;border-top:1px solid var(--line)}
+.trainer-thoughts details,.faq-item{border-bottom:1px solid var(--line)}
+.trainer-thoughts summary,.faq-item summary{list-style:none;cursor:pointer;position:relative;padding:19px 42px 19px 0;font-weight:700}
+.trainer-thoughts summary::-webkit-details-marker,.faq-item summary::-webkit-details-marker{display:none}
+.trainer-thoughts summary::after,.faq-item summary::after{content:"＋";position:absolute;right:4px;top:16px;color:var(--warm);font-size:20px;font-weight:400}
+.trainer-thoughts details[open] summary::after,.faq-item[open] summary::after{content:"−"}
+.trainer-thoughts details p{padding:0 34px 20px 0;margin:0;color:var(--muted)}
+
+/* Personal flow */
+.flow{background:#fff}
+.flow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.flow-step{background:#fff;padding:36px;min-height:300px}
+.flow-step>span{font-size:11px;color:var(--warm);font-weight:800;letter-spacing:.16em}
+.flow-step h3{font-size:28px;font-weight:400;margin:45px 0 14px}
+.flow-step p{color:var(--muted);margin:0;font-size:15px}
+
+/* Equipment */
+.equipment{background:var(--dark);color:#fff}
+.equipment-intro{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:start;margin-bottom:54px}
+.equipment-intro h2{margin-bottom:0}
+.equipment-intro p{color:rgba(255,255,255,.72);font-size:16px}
+.official-link{display:inline-block;border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:3px;font-size:12px}
+.equipment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.equipment-card{background:#232622;border:1px solid rgba(255,255,255,.12)}
+.equipment-card img{aspect-ratio:1.25;object-fit:cover}
+.equipment-card>div{padding:25px}
+.equipment-card span{color:var(--warm);font-size:10px;letter-spacing:.16em}
+.equipment-card h3{font-weight:400;font-size:25px;margin:8px 0 12px}
+.equipment-card p{color:rgba(255,255,255,.68);font-size:14px}
+.equipment-card .why{border-top:1px solid rgba(255,255,255,.14);padding-top:14px}
+.equipment-card .why strong{display:block;color:#fff;font-size:11px;margin-bottom:5px}
+.equipment-more{margin-top:25px;border:1px solid rgba(255,255,255,.18)}
+.equipment-more summary{cursor:pointer;padding:18px 22px;font-weight:700}
+.equipment-more ul{margin:0;padding:0 42px 22px;columns:2;color:rgba(255,255,255,.72)}
+
+/* FAQ */
+.faq{background:var(--paper2)}
+.faq-list{max-width:920px}
+.faq-item summary{font:700 18px "Yu Mincho","Hiragino Mincho ProN",serif;padding-top:23px;padding-bottom:23px}
+.faq-item summary::after{top:19px}
+.faq-item p{margin:0;padding:0 54px 24px 0;color:var(--muted)}
+
+/* Social links and Web3Forms */
+.social-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.social-links a{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:999px;padding:9px 14px;font-size:12px;font-weight:700;background:#fff}
+.social-links svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7}
+.botcheck{display:none!important}
+.h-captcha{margin:4px 0 22px;min-height:78px}
+.privacy-consent{display:flex;align-items:flex-start;gap:10px;margin:8px 0 22px;font-size:12px;color:var(--muted);cursor:pointer}
+.privacy-consent input{width:auto;margin-top:6px}
+.contact-review{margin-top:28px;padding:25px;background:var(--paper2);border:1px solid var(--line)}
+.contact-review h3{margin-bottom:14px}
+.contact-review dl{margin:0}
+.contact-review dl>div{display:grid;grid-template-columns:145px 1fr;gap:18px;padding:10px 0;border-top:1px solid var(--line)}
+.contact-review dt{font-size:11px;font-weight:700;color:var(--muted)}
+.contact-review dd{margin:0;white-space:pre-wrap;overflow-wrap:anywhere}
+.review-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px}
+.review-actions button{border:1px solid var(--sage);border-radius:999px;padding:11px 18px;background:transparent;color:var(--sage);font-weight:700}
+.review-actions .submit{background:var(--sage);color:#fff}
+.form-status{min-height:26px;margin:18px 0 0;font-weight:700;font-size:13px}
+.form-status.success{color:#2c6b42}.form-status.error{color:#9a3d35}.form-status.sending{color:var(--sage)}
+
+@media(max-width:1180px){.navlinks{gap:8px;font-size:9px}.nav-cta{padding:8px 10px}}
+@media(max-width:1000px){.navlinks{display:none!important}.menu-toggle{display:flex}.flow-grid,.equipment-grid{grid-template-columns:1fr}.flow-step{min-height:0}.equipment-intro{grid-template-columns:1fr;gap:25px}}
+@media(max-width:700px){.section{padding:78px 0}.flow-step{padding:25px}.flow-step h3{margin-top:22px}.equipment-more ul{columns:1}.contact-review dl>div{grid-template-columns:1fr;gap:3px}.review-actions{flex-direction:column-reverse}.review-actions button{width:100%}.trainer-thoughts summary,.faq-item summary{padding-right:38px}.faq-item p{padding-right:12px}}
