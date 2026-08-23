@@ -503,24 +503,6 @@ header{
 }
 .success.show{display:block}
 
-.final-cta{
-  padding:115px 0;
-  background:#fff;
-  text-align:center;
-}
-.final-cta h2{
-  max-width:950px;
-  margin-left:auto;margin-right:auto;
-  font-size:clamp(44px,6.3vw,86px);
-  line-height:1.08;
-}
-.final-cta p{
-  max-width:610px;
-  margin:0 auto 28px;
-  color:#70726d;
-}
-.final-cta .btn{background:var(--sage);border-color:var(--sage);color:#fff}
-
 .journal{
   padding:96px 0 112px;
   background:#fff;
@@ -755,8 +737,6 @@ footer{
   .map-card{left:10px;right:10px;bottom:10px}
   .form-row{grid-template-columns:1fr}
   .form{padding:21px}
-  .final-cta{padding:90px 0}
-  .final-cta h2{font-size:clamp(39px,11.4vw,55px);line-height:1.12}
   .journal{padding:78px 0 88px}
   .journal-head{display:block}
   .journal-nav{margin-top:18px}
@@ -1566,4 +1546,11 @@ body.menu-open{overflow:hidden}
   .price-fee b{font-size:22px}
   .price .plan{min-height:285px;padding:25px}
   .price .price-num{font-size:36px}
+}
+
+/* Keep the single contact destination compact before the footer. */
+.contact{padding-bottom:92px}
+
+@media(max-width:700px){
+  .contact{padding-bottom:64px}
 }
