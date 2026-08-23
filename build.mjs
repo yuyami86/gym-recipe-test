@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 const __dirname=path.dirname(fileURLToPath(import.meta.url));
 const src=path.join(__dirname,"src"), out=path.join(__dirname,"docs");
 const basePath="/gym-recipe-test";
-const assetVersion="20260824-2";
+const assetVersion="20260824-3";
 const readJSON=p=>JSON.parse(fs.readFileSync(p,"utf8"));
 const esc=s=>String(s??"").replace(/[&<>\"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const attr=esc;
@@ -116,7 +116,6 @@ function home(site,posts){const plans=site.prices.map(x=>`<article class="plan${
   <span class="mobile-line">まずは、あなたの身体を</span>
   <span class="mobile-line">知る時間から。</span>
 </h2></div><div class="contact-intro"><p class="lead">${esc(site.contact.lead)}</p></div></div>${contactActions(site)}</div></section>
-<section class="final-cta"><div class="container reveal"><div class="eyebrow">Start Your Recipe</div><h2 class="serif">身体が変わると、日常が変わる。</h2><p>正しく立つことから、正しく動くことへ。あなたの身体に合ったRecipeを、一緒に見つけます。</p><a class="btn sage" href="#contact">お問い合わせはこちら</a></div></section>
 </main>${footer(site)}</body></html>`}
 function article(site,p){const cover=p.image?`<div class="article-cover"><img src="${attr(safeUrl(p.image))}" alt="${attr(p.title)}"></div>`:"";return `<!doctype html><html lang="ja">${head(site,`${p.title} | ${site.name}`,p.excerpt,`${site.url}/journal/${encodeURIComponent(p.slug)}/`)}<body>${header(site)}<main class="article-page"><section class="article-hero"><div class="container"><div class="eyebrow">${fmtDate(p.date)} / ${esc(p.category)}</div><h1 class="serif">${esc(p.title)}</h1><p class="article-excerpt">${esc(p.excerpt)}</p></div>${cover}</section><article class="article-content">${markdown(p.body)}<div class="article-tools"><button class="like-btn" data-like-slug="${attr(p.slug)}">👍 参考になった <span>0</span></button><a class="back-journal" href="${basePath}/#journal">← Recipe Journalへ戻る</a></div></article></main>${footer(site)}</body></html>`}
 function notFound(site){return `<!doctype html><html lang="ja">${head(site,`ページが見つかりません | ${site.name}`,site.description,site.url+'/404.html')}<body><main class="thanks-page"><div class="thanks-card"><div class="eyebrow">404</div><h1 class="serif">ページが見つかりません。</h1><p>URLをご確認いただくか、トップページへお戻りください。</p><a class="btn sage" href="${basePath}/">トップページへ</a></div></main></body></html>`}
