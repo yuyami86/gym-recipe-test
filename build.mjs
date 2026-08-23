@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 const __dirname=path.dirname(fileURLToPath(import.meta.url));
 const src=path.join(__dirname,"src"), out=path.join(__dirname,"docs");
 const basePath="/gym-recipe-test";
-const assetVersion="20260824-1";
+const assetVersion="20260824-2";
 const readJSON=p=>JSON.parse(fs.readFileSync(p,"utf8"));
 const esc=s=>String(s??"").replace(/[&<>\"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const attr=esc;
@@ -65,7 +65,7 @@ function home(site,posts){const plans=site.prices.map(x=>`<article class="plan${
 </h2>${trainerIdentity}<blockquote class="trainer-motto">「${esc(site.trainer.motto)}」</blockquote><p>${esc(site.trainer.body)}</p><div class="stats"><div class="stat"><strong class="serif">${esc(site.trainer.years)}</strong><span>YEARS / トレーナー歴</span></div><div class="stat"><strong class="serif">${esc(site.trainer.core)}</strong><span>CORE STYLE / 指導の中心</span></div><div class="stat"><strong class="serif">${esc(site.trainer.specialty)}</strong><span>WEIGHT / 得意分野</span></div></div><div class="trainer-thoughts"><details><summary>フリーウェイトの魅力を、もっと深く伝えたい。</summary><p>${esc(site.story.openingReason)}</p></details><details><summary>あなたに合う“Recipe”を一緒につくる。</summary><p>${esc(site.story.nameOrigin)}</p></details><details><summary>運動を、日常の力に変えたい人へ。</summary><p>${esc(site.story.audience)}</p></details><details><summary>ジムの外でも生きる動きを。</summary><p>${esc(site.story.coachingPolicy)}</p></details></div></div></div></section>
 <section class="section flow" id="flow"><div class="container"><div class="section-head reveal"><div class="eyebrow">04 / Personal Flow</div><h2 class="serif">あなたを知ることから、始める。</h2><p class="lead">用意された内容を一律にこなすのではなく、目的と今の身体を知り、その人に合う進め方を一緒につくります。</p></div><div class="flow-grid">${flow}</div></div></section>
 <section class="section equipment" id="equipment"><div class="container"><div class="equipment-intro reveal"><div><div class="eyebrow">05 / Equipment</div><h2 class="serif">身体と向き合うための、確かな道具。</h2></div><div><p>${esc(site.equipment?.makerIntro)}</p><a class="official-link" href="https://repfitness.com/" target="_blank" rel="noopener noreferrer">REP公式サイトを見る ↗</a></div></div>${featured?`<div class="equipment-grid">${featured}</div>`:''}${additional}</div></section>
-<section class="section price" id="price"><div class="container"><div class="section-head reveal"><div class="eyebrow">06 / Price</div><h2 class="serif mobile-one-line">続け方も、あなたに合わせる。</h2><p class="lead">目的やトレーニング経験に合わせて、無理のないペースから始められます。</p></div><div class="price-grid">${plans}</div><div class="counseling-band reveal"><span class="label">FIRST COUNSELING</span><strong>${esc(site.counseling.title)}</strong><p>${esc(site.counseling.body)}</p></div></div></section>
+<section class="section price" id="price"><div class="container"><div class="section-head reveal"><div class="eyebrow">06 / Price</div><h2 class="serif mobile-one-line">続け方も、あなたに合わせる。</h2><p class="lead">目的やトレーニング経験に合わせて、無理のないペースから始められます。</p></div><div class="price-fees reveal"><div class="price-fee"><span>COUNSELING</span><strong>${esc(site.counseling.title)}</strong><b>${esc(site.counseling.price)}</b></div><div class="price-fee"><span>MEMBERSHIP</span><strong>${esc(site.admission.title)}</strong><b>${esc(site.admission.price)}</b></div></div><div class="price-grid">${plans}</div></div></section>
 <section class="section visit" id="visit">
   <div class="container visit-grid">
     <div class="visit-copy reveal">
