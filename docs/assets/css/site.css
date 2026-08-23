@@ -1487,8 +1487,8 @@ body.menu-open{overflow:hidden}
   .trainer{padding:92px 0}
   .trainer-grid{align-items:start;gap:56px}
   .trainer-photo{
-    position:sticky;
-    top:92px;
+    position:static;
+    top:auto;
     align-self:start;
     height:clamp(420px,42vw,520px);
     overflow:hidden;
@@ -1528,4 +1528,42 @@ body.menu-open{overflow:hidden}
   .trainer{padding:68px 0}
   .trainer-grid{gap:28px}
   .trainer-thoughts{margin-top:22px}
+}
+
+/* Price plans and initial fees */
+.price-fees{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  margin-bottom:18px;
+  border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.025);
+}
+.price-fee{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:14px;
+  min-height:76px;
+  padding:16px 20px;
+}
+.price-fee+.price-fee{border-left:1px solid rgba(255,255,255,.16)}
+.price-fee span{font-size:9px;letter-spacing:.16em;color:rgba(255,255,255,.48)}
+.price-fee strong{font-size:14px;color:#fff}
+.price-fee b{font:400 24px "Yu Mincho","Hiragino Mincho ProN",serif;color:#fff;white-space:nowrap}
+.price-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.price .plan{min-height:350px}
+.price .price-num{font-size:clamp(31px,3vw,40px);white-space:nowrap}
+
+@media(max-width:1180px){
+  .price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+
+@media(max-width:700px){
+  .price-fees,.price-grid{grid-template-columns:1fr}
+  .price-fee{grid-template-columns:1fr auto;gap:5px 14px;padding:15px 18px}
+  .price-fee+.price-fee{border-left:0;border-top:1px solid rgba(255,255,255,.16)}
+  .price-fee span{grid-column:1/-1}
+  .price-fee b{font-size:22px}
+  .price .plan{min-height:285px;padding:25px}
+  .price .price-num{font-size:36px}
 }
