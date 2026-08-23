@@ -17,6 +17,19 @@
   menu?.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setMenu(false)));
   document.addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
 
+  const trainerDetails=[...document.querySelectorAll('.trainer-thoughts details')];
+  const closeTrainerDetails=()=>trainerDetails.forEach(detail=>{detail.open=false});
+  closeTrainerDetails();
+  window.addEventListener('pageshow',closeTrainerDetails);
+  trainerDetails.forEach(detail=>{
+    detail.querySelector('summary')?.addEventListener('click',event=>{
+      event.preventDefault();
+      const willOpen=!detail.open;
+      trainerDetails.forEach(item=>{item.open=false});
+      detail.open=willOpen;
+    });
+  });
+
   const reduce=window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
   if(!reduce && 'IntersectionObserver' in window){
     const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');ro.unobserve(e.target)}}),{threshold:.12});
