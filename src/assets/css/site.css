@@ -361,6 +361,7 @@ header{
   border-top:1px solid currentColor;
   font-size:11px;
   opacity:.62;
+  white-space:nowrap;
 }
 .counseling-band{
   margin-top:18px;
@@ -1420,9 +1421,9 @@ body.menu-open{overflow:hidden}
 /* Equipment */
 .equipment{background:var(--dark);color:#fff}
 .equipment-intro{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:start;margin-bottom:54px}
+.equipment-intro:last-child{margin-bottom:0}
 .equipment-intro h2{margin-bottom:0}
 .equipment-intro p{color:rgba(255,255,255,.72);font-size:16px}
-.official-link{display:inline-block;border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:3px;font-size:12px}
 .equipment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .equipment-card{background:#232622;border:1px solid rgba(255,255,255,.12)}
 .equipment-card img{aspect-ratio:1.25;object-fit:cover}
@@ -1532,7 +1533,7 @@ body.menu-open{overflow:hidden}
 .price-fee b{font:400 24px "Yu Mincho","Hiragino Mincho ProN",serif;color:#fff;white-space:nowrap}
 .price-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
 .price .plan{min-height:350px}
-.price .price-num{font-size:clamp(31px,3vw,40px);white-space:nowrap}
+.price .price-num{font-size:clamp(31px,2.6vw,36px);white-space:nowrap}
 
 @media(max-width:1180px){
   .price-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -1553,4 +1554,55 @@ body.menu-open{overflow:hidden}
 
 @media(max-width:700px){
   .contact{padding-bottom:64px}
+}
+
+/* Mobile Japanese typography and unbroken labels */
+@media(max-width:700px){
+  body{line-break:strict}
+  h1,h2,h3,.serif,
+  p,li,summary,.trainer-motto,.contact-action,.mobile-menu nav a{
+    word-break:normal!important;
+    word-break:auto-phrase!important;
+    overflow-wrap:normal!important;
+    line-break:strict!important;
+  }
+  h1,h2,h3,.serif{text-wrap:balance}
+  p,li,summary{text-wrap:pretty}
+  .trainer-motto,.trainer-identity span{text-wrap:balance}
+  .trainer-identity span{
+    word-break:normal;
+    word-break:auto-phrase;
+    overflow-wrap:normal;
+    line-break:strict;
+  }
+  .concept-grid h2,.section-head h2,.trainer-copy h2,
+  .equipment-intro h2,.visit-copy h2,.contact-title-block h2{
+    font-size:clamp(31px,9vw,44px)!important;
+    line-height:1.24!important;
+  }
+  .trainer-copy,.trainer-grid>*{min-width:0}
+  .trainer-copy h2.trainer-heading{
+    font-size:clamp(29px,8.7vw,44px)!important;
+    letter-spacing:-.035em;
+  }
+  .equipment-intro h2{
+    font-size:clamp(30px,8.7vw,44px)!important;
+    letter-spacing:-.035em;
+  }
+  .visit-copy h2{
+    font-size:clamp(30px,8.7vw,44px)!important;
+  }
+  .trainer-identity strong,.price-num,.price-num small,
+  .price-fee b,.plan .bottom,.contact-action span{
+    white-space:nowrap!important;
+  }
+  .flow-step h3,.method-card h3{text-wrap:balance}
+  .mobile-menu nav a{white-space:nowrap}
+  .contact-action{line-height:1.45}
+}
+
+@media(max-width:360px){
+  .method-card,.flow-step,.price .plan{padding-left:22px;padding-right:22px}
+  .price .price-num{font-size:34px}
+  .contact-action{padding-left:14px;padding-right:14px;font-size:12.5px}
 }
