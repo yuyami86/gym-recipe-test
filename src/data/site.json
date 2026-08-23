@@ -49,29 +49,38 @@
   "prices": [
     {
       "tag": "FOR BEGINNERS",
-      "name": "Essential 4回",
-      "price": "¥28,000",
-      "unit": "/ 4 sessions",
-      "description": "ウェイトトレーニングをはじめとした、運動経験が少ない方向け。",
-      "detail": "60分 × 4回",
+      "name": "Essential・4回",
+      "price": "28,000円",
+      "unit": "/ 4回",
+      "description": "ウェイトトレーニングを始めたい方、運動経験がない方に向けたプログラム。",
+      "detail": "1回 60分",
       "featured": false
     },
     {
       "tag": "MAIN PROGRAM",
-      "name": "Main 4回",
-      "price": "¥36,000",
-      "unit": "/ 4 sessions",
-      "description": "スポーツや減量など、幅広い目的に合わせる本コース。",
-      "detail": "60分 × 4回",
+      "name": "Main・4回",
+      "price": "36,000円",
+      "unit": "/ 4回",
+      "description": "トレーニングの習慣化やスポーツ向けなど、さまざまな目的に対応する基本コース。",
+      "detail": "1回 60分",
       "featured": true
     },
     {
       "tag": "INTENSIVE",
-      "name": "Main 8回",
-      "price": "¥72,000",
-      "unit": "/ 8 sessions",
+      "name": "Main・8回",
+      "price": "72,000円",
+      "unit": "/ 8回",
       "description": "より高い頻度で継続したい方向けの集中コース。",
-      "detail": "60分 × 8回",
+      "detail": "1回 60分",
+      "featured": false
+    },
+    {
+      "tag": "FOR BUSINESS",
+      "name": "法人コース",
+      "price": "10,000円〜",
+      "unit": "/ 1回",
+      "description": "出張トレーニングに対応。福利厚生としての利用やグループレッスンも可能。",
+      "detail": "60分〜 / 出張対応",
       "featured": false
     }
   ],
@@ -85,18 +94,22 @@
   },
   "name": "Personal gym Recipe",
   "counseling": {
-    "title": "カウンセリング無料",
+    "title": "カウンセリング",
+    "price": "無料",
     "body": "まずは現在のお悩みや目標をお聞きし、無理のない進め方をご案内します。"
+  },
+  "admission": {
+    "title": "入会金",
+    "price": "22,000円"
   },
   "tagline": "TRAINING FOR BETTER DAILY LIFE",
   "url": "https://yuyami86.github.io/gym-recipe-test",
   "trainer": {
     "name": "美濃健太",
-    "reading": "ミノケンタ",
     "birth": "1994年生まれ",
     "origin": "北海道札幌市出身",
     "award": "コンテスト受賞歴あり",
-    "career": "ミノケンタ / 1994年生まれ / 北海道札幌市出身 / コンテスト受賞歴あり",
+    "career": "1994年生まれ / 北海道札幌市出身 / コンテスト受賞歴あり",
     "motto": "トレーニングで日常をより豊かに",
     "title": "“できる”まで、わかりやすく伝える。",
     "body": "フィジーク、格闘技、ウエイトリフティングなど様々な競技経験を背景に、重心コントロールとフリーウェイトを中心に指導。BIG3を軸に、一人ひとりの目的に合わせて身体の使い方を組み立てます。",
